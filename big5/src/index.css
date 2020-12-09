@@ -307,7 +307,7 @@
   background: #082E2D;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   min-width: 70px;
   z-index: 200;
 }
