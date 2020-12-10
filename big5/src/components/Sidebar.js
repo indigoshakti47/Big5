@@ -17,7 +17,7 @@ const SideBar = ({ logout }) => {
     const [active, setActive] = useState(false); 
     const links = [
         createLink(HomeIcon, 'Home', '/dashboard'),
-        createLink(MapIcon, 'Mapa', '/map'),
+        createLink(MapIcon, 'Big5', '/big5'),
         createLink(ListIcon, 'Lista de beneficiarios', '/lista-beneficiarios'),
         createLink(ExitToApp, 'Logout', '', logout),
     ]

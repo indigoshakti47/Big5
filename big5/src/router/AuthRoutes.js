@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-let previousRoute = '/products';
+let previousRoute = '/big5';
 
 const AuthComponent = ({
   component: Component,
