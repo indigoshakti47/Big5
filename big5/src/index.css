@@ -176,7 +176,7 @@
   margin: 20px;
   margin-top: 40px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   
 }
 

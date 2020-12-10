@@ -4,11 +4,11 @@ import "./../App.css";
 import BG1 from '../assets/bg-2.svg'; 
 import BG2 from '../assets/bg-3.svg'; 
 const Login = (props) => {
-  const { email, setEmail, password, setPassword, handleLogin, handleSignup, handleLogout, hasAccount, setHasAccount, emailError, passwordError } = props;
+  const { email, setEmail, password, setPassword, handleLogin, handleSignup, hasAccount, setHasAccount, emailError, passwordError } = props;
   return (
 <>
-      <img className = "bg-asset left" src = {BG1} />
-      <img className = "bg-asset right" src = {BG2} />
+      <img className = "bg-asset left" src = {BG1}  alt="image1"/>
+      <img className = "bg-asset right" src = {BG2}  alt="image1"/>
   
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
     <Grid container justify="center" alignItems="center" style={{ height: "100%" }}>

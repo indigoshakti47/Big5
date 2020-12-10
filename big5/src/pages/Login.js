@@ -17,11 +17,6 @@ const LoginPage = ({ login }) => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
-  const clearInput = () => {
-    setEmail('');
-    setPassword('');
-  };
-
   const clearError = () => {
     setPasswordError('');
     setEmailError('');
@@ -55,6 +50,9 @@ const LoginPage = ({ login }) => {
             break;
           case "auth/weak-password":
             setPasswordError(err.message);
+            break;
+          
+          default:
             break;
         }
       });

@@ -22,12 +22,11 @@ const SideBar = ({ logout }) => {
         createLink(ExitToApp, 'Logout', '', logout),
     ]
 
-    const [activeIcon, setActiveIcon] = useState();
     return (
         <React.Fragment> 
             { /* Desktop */}
         <div className = "side-bar desktop">
-            <img className = "logo" src = {Logo} /> 
+            <img className = "logo" src = {Logo} alt="image1"/> 
                 {
               links.map(({ icon: Icon, name, route, action }, index) => (
                     <div className = {index <= links.length - 2 ? "icon-container-menu" : "icon-container-menu last"} key={name}> 

@@ -27,6 +27,7 @@ const Router = ({ setUser }) => {
         setUser(user);
       }
     });
+    // eslint-disable-next-line
   }, []);
 
   return (
