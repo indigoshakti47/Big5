@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button'
 import Question from "../components/Question";
 import questions from "../questions/BFI.json";
 
+import axios from "axios"
+
 const formatedQuestions = questions.map(question => ({
 	question,
 	selected: null
@@ -27,6 +29,24 @@ export default function BFI() {
 		if (currentIndex + 1 < selectedQuestions.length) {
 			setTimeout(() => setCurrent(currentIndex + 1), 100);
 		} else {
+
+			axios({
+				url: '/api/bfi',
+				method: 'post',
+				data: {
+					"bfi": newSelected,
+					"user": 1
+				},
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+			}).then(function (response) {
+					console.log(response);
+			}).catch(function (error) {
+					console.log(error);
+			});
+
 			console.log(newSelected)
 		}
 	}

@@ -21,6 +21,7 @@ admin.initializeApp({
 /* Declare routes*/
 const userRoute = require('./routes/user');
 const accountRoute = require('./routes/account');
+const bfiRoute = require('./routes/bfi');
 
 const app = express();
 app.use(cors());
@@ -32,6 +33,7 @@ app.use(fileUpload({
 // Api routes
 app.use('/api/', userRoute);
 app.use('/api/', accountRoute);
+app.use('/api/', bfiRoute);
 
 //React route
 app.use(express.static(path.join(__dirname, '../../big5/build')));
