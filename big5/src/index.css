@@ -596,3 +596,10 @@ bottom: 0px;
   transform: rotate(12);
   display: block;
 }
+.questionary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

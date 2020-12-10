@@ -1,6 +1,7 @@
 import Login from '../pages/Login';
 import Big5 from '../pages/Big5'
 import RegisterProduct from '../pages/RegisterProduct';
+import BFI from '../pages/BFI';
 
 const ROUTES = [
   {
@@ -22,8 +23,15 @@ const ROUTES = [
     key: 'REGISTER_PRODUCT',
     exact: true,
     component: RegisterProduct,
-    auth: true,
+    auth: false,
   },
+  {
+    path: '/bfi',
+    key: 'BFI',
+    exact: true,
+    component: BFI,
+    auth: false,
+  }
 ];
 
 export default ROUTES;
