@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import Question from "../components/Question";
 import questions from "../questions/BFI.json";
 
+//import { v4 as uuidv4 } from "uuid"
 import axios from "axios"
 
 const formatedQuestions = questions.map(question => ({
@@ -11,7 +12,7 @@ const formatedQuestions = questions.map(question => ({
 	selected: null
 }));
 
-export default function BFI() {
+export default function BFI(props) {
 	const [currentIndex, setCurrent] = useState(0);
 	const [selectedQuestions, setSelectedQuestions] = useState(formatedQuestions);
 
@@ -35,7 +36,8 @@ export default function BFI() {
 				method: 'post',
 				data: {
 					"bfi": newSelected,
-					"user": 1
+					"user": "1", //uuidv4(),
+					"username": "Nathalia"
 				},
 				headers: {
 					Accept: "application/json",
@@ -43,6 +45,7 @@ export default function BFI() {
 				},
 			}).then(function (response) {
 					console.log(response);
+					props.history.push(`/result`)
 			}).catch(function (error) {
 					console.log(error);
 			});

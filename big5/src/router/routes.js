@@ -2,6 +2,7 @@ import Login from '../pages/Login';
 import Big5 from '../pages/Big5'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
+import resultTest from '../pages/resultTest/resultTest';
 
 const ROUTES = [
   {
@@ -30,6 +31,13 @@ const ROUTES = [
     key: 'BFI',
     exact: true,
     component: BFI,
+    auth: false,
+  },
+  {
+    path: '/result',
+    key: 'RESULT',
+    exact: true,
+    component: resultTest,
     auth: false,
   }
 ];

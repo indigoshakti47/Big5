@@ -12,7 +12,7 @@ const { reverse } = require("../helpers/bfiHelpers")
  * @return {Object} 
  */
 
-async function createBfiUser(user, bfi) {
+async function createBfiUser(user, username, bfi) {
   
     let bfiRef = firebase.firestore().collection('bfi');
 
@@ -36,6 +36,7 @@ async function createBfiUser(user, bfi) {
     .doc()
     .set({
       user: user,
+      username: username,
       extraversion,
       agreeableness,
       conscientiousness,
@@ -55,4 +56,26 @@ async function createBfiUser(user, bfi) {
     };
   }
 
+  /**
+ * Get a profile stored in the firestore collection 'users' by the uid.
+ * 
+ * @param {number} uid The user uid you are trying to search.
+ * @return {Object} An object containing the bfi data.
+ */
+async function getUserBfi(uid) {
+
+  let bfiRef = firebase.firestore().collection('bfi');
+
+  let data = {}
+
+  let query = await bfiRef.where('user', '==', uid).get()
+
+  query.forEach(doc => {
+    data[doc.id] = doc.data();
+  });
+
+  return data;
+}
+
 module.exports.createBfiUser = createBfiUser
+module.exports.getUserBfi = getUserBfi
