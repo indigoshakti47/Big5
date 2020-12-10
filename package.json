@@ -1,0 +1,45 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev-start": "nodemon --exec babel-node ./server/src/bin/www",
+    "start": "npm run build && node ./build/bin/www",
+    "build": "npm run clean && npm run babel-build",
+    "babel-build": "babel -d ./build ./server/src -s",
+    "clean": "rm -rf ./build && mkdir build",
+    "deploy": "serverless deploy",
+    "heroku-prebuild": "cd ./client && npm install && npm run build"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "accesscontrol": "^2.2.1",
+    "aws-serverless-express": "^3.3.8",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "exceljs": "^3.10.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "firebase-admin": "^8.12.1",
+    "http-errors": "^1.7.3",
+    "jwt-decode": "^2.2.0",
+    "nodemailer": "^6.4.8",
+    "react-firebase-file-uploader": "^2.4.3",
+    "serverless-http": "^2.5.0",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.10.1",
+    "nodemon": "^2.0.4"
+  },
+  "author": "Oscar",
+  "license": "ISC"
+}

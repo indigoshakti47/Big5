@@ -14,31 +14,32 @@ export default function BFI() {
 	const [selectedQuestions, setSelectedQuestions] = useState(formatedQuestions);
 
 	const handleSelect = (option, index) => {
+		console.log(option, index)
 		const newSelected = selectedQuestions.map((question, i) => {
 			if (i === index) {
-				const newQuestion = {...question};
+				const newQuestion = { ...question };
 				newQuestion.selected = option;
 				return newQuestion;
 			}
 			return question;
 		});
 		setSelectedQuestions(newSelected);
-		if (currentIndex+1 < selectedQuestions.length) {
-			setTimeout(() => setCurrent(currentIndex + 1), 500);
+		if (currentIndex + 1 < selectedQuestions.length) {
+			setTimeout(() => setCurrent(currentIndex + 1), 100);
 		} else {
-			console.log(selectedQuestions);
+			console.log(newSelected)
 		}
 	}
 
 	const currentQuestion = selectedQuestions[currentIndex];
 
-  return <div className="questionary">
+	return <div className="questionary">
 		<Question
 			selected={currentQuestion.selected}
 			question={currentQuestion.question}
 			numOptions={5}
 			onSelect={(option => handleSelect(option, currentIndex))}
 		/>
-		{ currentIndex >= 1 && <Button variant="contained" color="secondary" onClick={() => setCurrent(currentIndex - 1)}>Back</Button> }
+		{currentIndex >= 1 && <Button variant="contained" color="secondary" onClick={() => setCurrent(currentIndex - 1)}>Back</Button>}
 	</div>;
 }
