@@ -16,7 +16,6 @@
   }
 
   &__analysis {
-    text-align: center;
     margin: auto;
     padding-top: 20px;
     padding: 10px;
@@ -24,6 +23,9 @@
     background: white;
     .h2{
       text-align: center;
+    }
+    .h3{
+      text-align: left;
     }
   }
 
