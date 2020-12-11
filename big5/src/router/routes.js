@@ -2,6 +2,7 @@ import Login from '../pages/Login';
 import Servqual from '../pages/Servqual'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
+import PersonalForm from '../pages/PersonalForm';
 import resultTest from '../pages/resultTest/resultTest';
 
 const ROUTES = [
@@ -10,6 +11,13 @@ const ROUTES = [
     key: 'LOGIN',
     exact: true,
     component: Login,
+    auth: false,
+  },
+  {
+    path: ['/form'], 
+    key: 'FORM',
+    exact: true,
+    component: PersonalForm,
     auth: false,
   },
   {
