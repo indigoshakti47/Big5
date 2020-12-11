@@ -4,6 +4,7 @@ import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
 import resultBfi from '../pages/resultBfi/resultBfi';
 import resultServqual from '../pages/resutlServqual/resultServqual';
+import PersonalForm from '../pages/PersonalForm';
 
 const ROUTES = [
   {
@@ -11,6 +12,13 @@ const ROUTES = [
     key: 'LOGIN',
     exact: true,
     component: Login,
+    auth: false,
+  },
+  {
+    path: ['/form'], 
+    key: 'FORM',
+    exact: true,
+    component: PersonalForm,
     auth: false,
   },
   {
