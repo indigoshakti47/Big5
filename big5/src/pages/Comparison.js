@@ -1,12 +1,71 @@
-import React, { Component } from 'react'
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
+import axios from "axios"
+import './PersonalForm.scss';
 
-export default class Comparison extends Component {
-    render() {
-        return (
-            <div>
-                This is where the comparison between users will be located
-                
-            </div>
-        )
-    }
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+export default function PersonalForm() {
+	const [formData, setFormData] = useState({
+		user1: '',
+		user2: '',
+	});
+
+	const router = useHistory();
+
+	const handleChange = ({ target }) => {
+		setFormData({
+			...formData,
+			[target.name]: target.value
+		});
+	}
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(formData);
+
+		axios({
+			url: '/api/user',
+			method: 'post',
+			data: {
+				formData: formData
+			},
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+		}).then((response) => {
+				console.log(response);
+				localStorage.setItem('testerId', response.data.data.user);
+				localStorage.setItem('testerUsername', formData.name);
+				setTimeout(() => router.push('bfi'), 1400);
+		}).catch((error) => {
+				console.log(error);
+		});
+	}
+
+	return (
+    <div className="PersonalInfo">
+
+			<Card>
+				<CardHeader className="PersonalInfo__title" title="Result comparison">
+				</CardHeader>
+				<CardContent>
+					<form onSubmit={handleSubmit}>
+						<TextField className="PersonalInfo__input" required name="user1" onChange={handleChange} value={formData.user1} label="User1" />
+						<TextField className="PersonalInfo__input" required name="user2" type="number" onChange={handleChange} value={formData.user2} label="User2" />
+						<div className="PersonalInfo__button">
+							<Button variant="contained" color="secondary" type="submit">
+								Next
+							</Button>
+						</div>
+					</form>
+				</CardContent>
+			</Card>
+    </div>
+  );
 }

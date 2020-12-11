@@ -254,6 +254,9 @@
   .side-bar.desktop{
    display: none !important;
   }
+  .layout-children{
+    margin-left: 70px;
+  }
 
   .effect-side{
     position: fixed;
@@ -307,7 +310,6 @@
   background: #f50057;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   min-width: 70px;
   z-index: 200;
 }
@@ -661,4 +663,15 @@ body{
 }
 *, ::after, ::before {
   box-sizing: border-box;
+}
+
+.side-bar.desktop{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.layout-children{
+  margin-left: 70px;
 }
