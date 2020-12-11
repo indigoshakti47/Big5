@@ -30,6 +30,7 @@ router.post('/bfi',
 /* Get one user profile by uid */
 router.get('/bfi/:uid',
 async (req, res, next) => {
+
   const uid = req.params.uid;
 
   const bfi = await bfiService.getUserBfi(uid);

@@ -136,29 +136,29 @@ const ResultBfi = () => {
         <h3>{bfi.conscientiousness >= 50 ? "Conscientiousness" : "Lack of direction"} {bfi.conscientiousness}</h3>
         <p>
           {bfi.conscientiousness >= 50
-            ? `${bfi.username} tend to be dependable and organized as their high score in conscientiousness shows`
-            : `${bfi.username} tend to be careless and disorganized as their low score in conscientiousness shows.`}
+            ? `They tend to be dependable and organized as their high score in conscientiousness shows`
+            : `They tend to be careless and disorganized as their low score in conscientiousness shows.`}
         </p>
 
         <h3>{bfi.extraversion >= 50 ? "Extraversion" : "Introversion"} {bfi.extraversion}</h3>
         <p>
           {bfi.extraversion >= 50
-            ? `When it comes to relationships, ${bfi.username} tend to be outgoing and warm. However, it would be beneficial to be wary of impulsive and inattentive behaviour.            `
-            : `When it comes to relationships, ${bfi.username} tend to be on the more quiet and reserved spectrum of personality             `}
+            ? `When it comes to relationships, they tend to be outgoing and warm. However, it would be beneficial to be wary of impulsive and inattentive behaviour.            `
+            : `When it comes to relationships, they tend to be on the more quiet and reserved spectrum of personality`}
         </p>
         
         <h3>{bfi.agreeableness >= 50 ? "Agreeableness" : "Antagonism"} {bfi.agreeableness}</h3>
         <p>
           {bfi.agreeableness >= 50
-            ? `Furthermore, ${bfi.username}'s high score in agreeableness shows them to be trusting and empathetic, as well as more likely to developing care-taking traits `
-            : `Furthermore, ${bfi.username}'s low score in agreeableness shows them to be critical and suspicious, and are more likely to become overly competitive`}
+            ? `Furthermore, their high score in agreeableness shows them to be trusting and empathetic, as well as more likely to developing care-taking traits `
+            : `Furthermore, their low score in agreeableness shows them to be critical and suspicious, and are more likely to become overly competitive`}
         </p>
 
         <h3>{bfi.neuroticism >= 50 ? "Neuroticism" : "Emotional stability"} {bfi.neuroticism}</h3>
         <p>
           {bfi.neuroticism >= 50
-            ? `Lastly, ${bfi.username}  high scores in neuroticism correlate to anxious behavior and proneness to negative emotions. It would be advisable to be in the lookout of depression or anxiety disorders.             `
-            : `Lastly, ${bfi.username}  low scores in neuroticism correlate to calm behavior and emotional stability`}
+            ? `Lastly, ${bfi.username} high scores in neuroticism correlate to anxious behavior and proneness to negative emotions. It would be advisable to be in the lookout of depression or anxiety disorders.             `
+            : `Lastly, ${bfi.username} low scores in neuroticism correlate to calm behavior and emotional stability`}
         </p>
       </div>
       <div className="results__button">
