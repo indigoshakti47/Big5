@@ -1,22 +1,22 @@
 import Login from '../pages/Login';
-import Big5 from '../pages/Big5'
+import Servqual from '../pages/Servqual'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
 import resultTest from '../pages/resultTest/resultTest';
 
 const ROUTES = [
   {
-    path: ['/', '/login', '/sign-up'], 
+    path: ['/', '/login', '/sign-up'],  
     key: 'LOGIN',
     exact: true,
     component: Login,
     auth: false,
   },
   {
-    path: ['/big5'], 
-    key: 'BIG5',
+    path: ['/servqual'], 
+    key: 'SERVQUAL',
     exact: true,
-    component: Big5,
+    component: Servqual,
     auth: false,
   },
   {
