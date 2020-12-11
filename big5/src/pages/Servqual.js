@@ -36,8 +36,8 @@ export default function Servqual(props) {
 				method: 'post',
 				data: {
 					"servqual": newSelected,
-					"user": "1",
-					"username": "Nathalia"
+					"user": localStorage.getItem('testerId'),
+					"username": localStorage.getItem('testerUsername')
 				},
 				headers: {
 					Accept: "application/json",

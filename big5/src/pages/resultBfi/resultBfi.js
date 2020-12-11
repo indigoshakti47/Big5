@@ -11,7 +11,7 @@ const ResultBfi = () => {
 
   useEffect(() => {
     axios({
-      url: `/api/bfi/`+1,
+      url: `/api/bfi/`+localStorage.getItem('testerId'),
       method: 'get',
       headers: {
         Accept: "application/json",

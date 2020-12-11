@@ -9,22 +9,16 @@ var accountService = require("../services/accountService");
 /* Create a new user */
 router.post('/user',
   async (req, res, next) => {
-    let { email, password, pInfo, files, role, code } = req.body;
+    const { formData } = req.body;
 
-    if (password == null)
-      password = Math.random().toString(36).substr(2, 8);
-
-    var user = await userService.createUserAccount(email, password, pInfo, role, code);
-    await userService.createUserClient(user.uid, email, pInfo, files, role);
+    let user = await userService.createUserClient(formData);
 
     res.json({
       status: 200,
       response: "USER_CREATED",
 
       data: {
-        uid: user.uid,
-        email: email,
-        password: user.password
+        user
       },
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -33,35 +27,6 @@ router.post('/user',
 
     });
   });
-
-
-/* Create a new admin */
-router.post('/user/admin',
-  async (req, res, next) => {
-    let { email, password, role, userName, typeRole } = req.body;
-
-
-    var user = await userService.createUserAccount(email, password, "", role, "", userName);
-    await userService.createUserAdmin(user.uid, email, role, userName, typeRole);
-
-    res.json({
-      status: 200,
-      response: "ADMIN_CREATED",
-
-      data: {
-        uid: user.uid,
-        email: email,
-        password: user.password
-      },
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-
-    });
-  });
-
-
 
 /* Update a user profile given an uid and a profile dictionary */
 router.put('/user/:uid', ensureAuthenticated,

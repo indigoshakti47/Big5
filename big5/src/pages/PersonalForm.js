@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import axios from "axios"
 import './PersonalForm.scss';
 
 import Card from '@material-ui/core/Card';
@@ -29,10 +30,29 @@ export default function PersonalForm() {
 		});
 	}
 
-	const hadleSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formData);
-		router.push('bfi');
+
+		axios({
+			url: '/api/user',
+			method: 'post',
+			data: {
+				formData: formData
+			},
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+		}).then(function (response) {
+				console.log(response);
+
+				localStorage.setItem('testerId', response.data.data.user);
+				localStorage.setItem('testerUsername', formData.name);
+				setTimeout(() => router.push('bfi'), 1400);
+		}).catch(function (error) {
+				console.log(error);
+		});
 	}
 
 	return (
@@ -42,7 +62,7 @@ export default function PersonalForm() {
 				<CardHeader className="PersonalInfo__title" title="Personal Information">
 				</CardHeader>
 				<CardContent>
-					<form onSubmit={hadleSubmit}>
+					<form onSubmit={handleSubmit}>
 						<TextField className="PersonalInfo__input" required name="name" onChange={handleChange} value={formData.name} label="Name" />
 						<TextField className="PersonalInfo__input" required name="age" type="number" onChange={handleChange} value={formData.age} label="Age" />
 						<TextField className="PersonalInfo__input" required name="gender" onChange={handleChange} value={formData.gender} label="Gender" />

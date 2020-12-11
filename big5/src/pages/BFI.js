@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button'
 import Question from "../components/Question";
 import questions from "../questions/BFI.json";
 
-//import { v4 as uuidv4 } from "uuid"
 import axios from "axios"
 
 const formatedQuestions = questions.map(question => ({
@@ -36,8 +35,8 @@ export default function BFI(props) {
 				method: 'post',
 				data: {
 					"bfi": newSelected,
-					"user": "1", //uuidv4(),
-					"username": "Nathalia"
+					"user": localStorage.getItem('testerId'),
+					"username": localStorage.getItem('testerUsername')
 				},
 				headers: {
 					Accept: "application/json",

@@ -11,7 +11,7 @@ const ResultServqual = () => {
 
   useEffect(() => {
     axios({
-      url: `/api/servqual/`+1,
+      url: `/api/servqual/`+localStorage.getItem('testerId'),
       method: 'get',
       headers: {
         Accept: "application/json",

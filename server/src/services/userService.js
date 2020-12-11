@@ -1,4 +1,4 @@
-var firebase = require("firebase-admin");
+const firebase = require("firebase-admin");
 var createError = require("http-errors");
 
 /**
@@ -42,19 +42,12 @@ async function createUserAccount(email, password, userName) {
  * @param {string} role The password for the user created.
  * @param {Object} pInfo Personal information about the user. 
  */
-async function createUserClient(uid, email, pInfo, files, role) {
+async function createUserClient(formData) {
 
-  var userRef = firebase.firestore().collection('users').doc(uid);
+  var userRef = firebase.firestore().collection('users').doc();
 
   const data = {
-    _id: uid,
-    email: email,
-    pInfo: pInfo,
-    files: files,
-    role: role,
-    auth: false,
-    enabled: true,
-    createdAt: firebase.firestore.Timestamp.now(),
+    formData
   };
 
   await userRef.set(data)
@@ -62,6 +55,8 @@ async function createUserClient(uid, email, pInfo, files, role) {
       throw createError(500, "FIRESTORE_TRANSACTION_ERROR");
     });
 
+  //Return the id of the user
+  return userRef._path.segments[1];
   }
 /**
  * Get a profile stored in the firestore collection 'users' by the uid.
