@@ -3,12 +3,14 @@
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import { Link } from 'react-router-dom';
 
 export default function AddUserCard() {
     return (
         <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
+          <Link to={'/form'}>
           <Card>
                 <CardContent>
                     <div className="text-center">
@@ -20,8 +22,10 @@ export default function AddUserCard() {
                     </div>
                 </CardContent>
             </Card>
+            </Link>
           </div>
           <div className="flip-card-back">
+          <Link to={'/form'}>
           <Card>
                 <CardContent>
                     <div className="text-center">
@@ -33,6 +37,7 @@ export default function AddUserCard() {
                     </div>
                 </CardContent>
             </Card>
+            </Link>
           </div>
         </div>
       </div>
