@@ -47,24 +47,16 @@ router.put('/user/:uid', ensureAuthenticated,
   });
 
 /* Get all the users in the database [limited by default to 20]  */
-router.get('/user', ensureAuthenticated,
+router.get('/user',
 
   async (req, res, next) => {
-    const { page, type, auth, RepresName, companyName, idNumberCompany, movil, email } = req.query;
-    var user;
-    var office;
 
-    if (req.uid != undefined) user = await userService.getUserInhouse(req.uid);
-    if (user.role != 'admin') office = user.email;
-
-
-    const response = await userService.getAllUserInhouse(page, office, type, auth, RepresName, companyName, idNumberCompany, movil, email);
+    const response = await userService.getUsers();
 
     res.json({
       status: 200,
       data: {
-        users: response.users,
-        size: response.size
+        users: response
       },
       headers: {
         'Access-Control-Allow-Origin': '*',

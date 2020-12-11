@@ -25,7 +25,7 @@ const Login = (props) => {
             
             variant="outlined"
             fullWidth
-            autoCapitalize
+            autoCapitalize={"true"}
             required
             value={email}
             autoFocus onChange={(
@@ -41,7 +41,7 @@ const Login = (props) => {
             type="password"
             variant="outlined"
             fullWidth
-            autoCapitalize
+            autoCapitalize={"true"}
             required
             value={password}
             autoFocus onChange={(

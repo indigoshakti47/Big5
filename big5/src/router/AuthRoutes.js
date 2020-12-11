@@ -1,17 +1,18 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
-let previousRoute = '/big5';
+let previousRoute = "/big5";
 
 const AuthComponent = ({
   component: Component,
   path,
   exact,
   logged,
-  redirect
+  redirect,
 }) => {
-  console.log('isLogged: ', logged)
+  console.log("isLogged: ", logged);
+
   if (logged || redirect === false) {
     return <Route component={Component} path={path} exact={exact} />;
   }
@@ -21,12 +22,7 @@ const AuthComponent = ({
   return <Redirect to="/" />;
 };
 
-const NoAuthComponent = ({
-  component: Component,
-  path,
-  exact,
-  logged,
-}) => {
+const NoAuthComponent = ({ component: Component, path, exact, logged }) => {
   if (logged) {
     return <Redirect to={previousRoute} />;
   }
@@ -36,7 +32,7 @@ const NoAuthComponent = ({
 
 function mapStateToProps({ user }) {
   return {
-    logged: !!user
+    logged: !!user,
   };
 }
 
