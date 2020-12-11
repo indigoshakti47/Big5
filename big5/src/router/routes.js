@@ -2,8 +2,8 @@ import Login from '../pages/Login';
 import Servqual from '../pages/Servqual'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
-import resultBfi from '../pages/resultBfi/resultBfi';
-import resultServqual from '../pages/resutlServqual/resultServqual';
+import ResultBfi from '../pages/ResultBfi/ResultBfi';
+import ResultServqual from '../pages/ResutlServqual/ResultServqual';
 import PersonalForm from '../pages/PersonalForm';
 
 const ROUTES = [
@@ -46,14 +46,14 @@ const ROUTES = [
     path: '/resultbfi',
     key: 'RESULTBFI',
     exact: true,
-    component: resultBfi,
+    component: ResultBfi,
     auth: false,
   },
   {
     path: '/resultservqual',
     key: 'RESULTSERVQUAL',
     exact: true,
-    component: resultServqual,
+    component: ResultServqual,
     auth: false,
   }
 ];

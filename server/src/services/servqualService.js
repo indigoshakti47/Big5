@@ -16,37 +16,50 @@ async function createServqualUser(user, username, servqual) {
   
     let bfiRef = firebase.firestore().collection('servqual');
 
-    let tangibilityExpectation = servqual[0].selected + servqual[1].selected 
-      + servqual[2].selected + servqual[3].selected;
+    let tangibilityExpectation = Math.round(((servqual[0].selected + servqual[1].selected 
+      + servqual[2].selected + servqual[3].selected) * 100 ) / 28);
 
-    let reliabilityExpectation = servqual[4].selected + servqual[5].selected 
-      + servqual[6].selected + servqual[7].selected + servqual[8].selected;
+    let reliabilityExpectation = Math.round(((servqual[4].selected + servqual[5].selected 
+      + servqual[6].selected + servqual[7].selected + servqual[8].selected) * 100 ) / 35);
 
-    let responsivenessExpectation = reverse(servqual[9].selected) + reverse(servqual[10].selected)
-      + reverse(servqual[11].selected) + reverse(servqual[12].selected);
+    let responsivenessExpectation = Math.round(((reverse(servqual[9].selected) + reverse(servqual[10].selected)
+      + reverse(servqual[11].selected) + reverse(servqual[12].selected)) * 100 ) / 28);
 
-    let assuranceExpectation = servqual[13].selected + servqual[14].selected 
-      + servqual[15].selected + servqual[16].selected;
+    let assuranceExpectation = Math.round(((servqual[13].selected + servqual[14].selected 
+      + servqual[15].selected + servqual[16].selected) * 100 ) / 28);
 
-    let empathyExpectation = reverse(servqual[17].selected) + reverse(servqual[18].selected)
-      + reverse(servqual[19].selected) + reverse(servqual[20].selected) + reverse(servqual[21].selected);
+    let empathyExpectation = Math.round(((reverse(servqual[17].selected) + reverse(servqual[18].selected)
+      + reverse(servqual[19].selected) + reverse(servqual[20].selected) 
+      + reverse(servqual[21].selected)) * 100 ) / 35);
 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
-    let tangibilityPerceptions = servqual[22].selected + servqual[23].selected 
-      + servqual[24].selected + servqual[25].selected;
+    let tangibilityPerceptions = Math.round(((servqual[22].selected + servqual[23].selected 
+      + servqual[24].selected + servqual[25].selected) * 100 ) / 28);
 
-    let reliabilityPerceptions = servqual[26].selected + servqual[27].selected 
-      + servqual[28].selected + servqual[29].selected + servqual[30].selected;
+    let reliabilityPerceptions = Math.round(((servqual[26].selected + servqual[27].selected 
+      + servqual[28].selected + servqual[29].selected + servqual[30].selected) * 100 ) / 35);
 
-    let responsivenessPerceptions = reverse(servqual[31].selected) + reverse(servqual[32].selected)
-      + servqual[33].selected + reverse(servqual[34].selected);
+    let responsivenessPerceptions = Math.round(((reverse(servqual[31].selected) + reverse(servqual[32].selected)
+      + servqual[33].selected + reverse(servqual[34].selected)) * 100 ) / 28);
 
-    let assurancePerceptions = servqual[35].selected + servqual[36].selected 
-      + servqual[37].selected + servqual[38].selected;
+    let assurancePerceptions = Math.round(((servqual[35].selected + servqual[36].selected 
+      + servqual[37].selected + servqual[38].selected) * 100 ) / 28);
 
-    let empathyPerceptions = reverse(servqual[17].selected) + reverse(servqual[18].selected)
-      + reverse(servqual[19].selected) + reverse(servqual[20].selected) + reverse(servqual[21].selected);
+    let empathyPerceptions = Math.round(((reverse(servqual[17].selected) + reverse(servqual[18].selected)
+      + reverse(servqual[19].selected) + reverse(servqual[20].selected) 
+      + reverse(servqual[21].selected)) * 100 ) / 35);
+
+    //Save the answers for the excel report
+    let answers = {}
+    for(let i = 0; i < servqual.length; i++){
+      answers[i] = servqual[i]
+    }
+    
+    let bfiAnswersRef = firebase.firestore().collection('servqualAnswers');
+    bfiAnswersRef.doc(user).set(answers).catch((err) => {
+      throw createError(500, "FIRESTORE_TRANSACTION_ERROR ", err);
+    });
 
     bfiRef
     .doc()

@@ -12,7 +12,7 @@ const formatedQuestions = questions.map(question => ({
 	selected: null
 }));
 
-export default function Servqual() {
+export default function Servqual(props) {
 	const [currentIndex, setCurrent] = useState(0);
 	const [selectedQuestions, setSelectedQuestions] = useState(formatedQuestions);
 
@@ -45,7 +45,7 @@ export default function Servqual() {
 				},
 			}).then(function (response) {
 					console.log(response);
-					//props.history.push(`/result`)
+					setTimeout(() => props.history.push(`/resultservqual`), 1400);
 			}).catch(function (error) {
 					console.log(error);
 			});

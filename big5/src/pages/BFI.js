@@ -45,7 +45,8 @@ export default function BFI(props) {
 				},
 			}).then(function (response) {
 					console.log(response);
-					props.history.push(`/result`)
+
+					setTimeout(() => props.history.push(`/resultbfi`), 1400);
 			}).catch(function (error) {
 					console.log(error);
 			});

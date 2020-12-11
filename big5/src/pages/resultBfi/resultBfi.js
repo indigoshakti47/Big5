@@ -53,7 +53,7 @@ const ResultBfi = () => {
           ]}
           keys={[[bfi.username]]}
           indexBy="type"
-          maxValue="auto"
+          maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
           curve="cardinalClosed"
           borderWidth={1}
