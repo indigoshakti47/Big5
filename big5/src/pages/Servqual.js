@@ -12,7 +12,7 @@ const formatedQuestions = questions.map(question => ({
 	selected: null
 }));
 
-export default function Servqual(props) {
+export default function Servqual() {
 	const [currentIndex, setCurrent] = useState(0);
 	const [selectedQuestions, setSelectedQuestions] = useState(formatedQuestions);
 
@@ -32,10 +32,10 @@ export default function Servqual(props) {
 		} else {
 
 			axios({
-				url: '/api/bfi',
+				url: '/api/servqual',
 				method: 'post',
 				data: {
-					"bfi": newSelected,
+					"servqual": newSelected,
 					"user": "1",
 					"username": "Nathalia"
 				},
@@ -45,7 +45,7 @@ export default function Servqual(props) {
 				},
 			}).then(function (response) {
 					console.log(response);
-					props.history.push(`/result`)
+					//props.history.push(`/result`)
 			}).catch(function (error) {
 					console.log(error);
 			});

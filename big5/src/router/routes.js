@@ -2,8 +2,9 @@ import Login from '../pages/Login';
 import Servqual from '../pages/Servqual'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
+import resultBfi from '../pages/resultBfi/resultBfi';
+import resultServqual from '../pages/resutlServqual/resultServqual';
 import PersonalForm from '../pages/PersonalForm';
-import resultTest from '../pages/resultTest/resultTest';
 
 const ROUTES = [
   {
@@ -42,10 +43,17 @@ const ROUTES = [
     auth: false,
   },
   {
-    path: '/result',
-    key: 'RESULT',
+    path: '/resultbfi',
+    key: 'RESULTBFI',
     exact: true,
-    component: resultTest,
+    component: resultBfi,
+    auth: false,
+  },
+  {
+    path: '/resultservqual',
+    key: 'RESULTSERVQUAL',
+    exact: true,
+    component: resultServqual,
     auth: false,
   }
 ];
