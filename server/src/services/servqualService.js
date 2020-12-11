@@ -1,5 +1,6 @@
 const firebase = require("firebase-admin");
 const createError = require("http-errors");
+const exceljs = require("exceljs");
 
 const { reverse } = require("../helpers/servqualHelper")
 
@@ -116,5 +117,39 @@ async function getServqualBfi(uid) {
   return data;
 }
 
+  /**
+ * Get a profile stored in the firestore collection 'users' by the uid.
+ * 
+ * @param {number} uid The user uid you are trying to search.
+ * 
+ * @return {Object} An object containing the bfi data.
+ */
+async function getUserExcelServqual(uid, username) {
+
+  let servqualRef = await firebase.firestore().collection('servqualAnswers').doc(uid).get();
+  let servqualRefData = servqualRef.data()
+  
+  const workbook = new exceljs.Workbook();
+  const worksheet = workbook.addWorksheet("Servqual Results");
+  
+  worksheet.columns = [
+    {header: 'Name', key: 'name', width: 10},
+    {header: 'Question', key: 'question', width: 101}, 
+    {header: 'Selected', key: 'selected', width: 15,}
+  ];
+  
+  //Make an array for the excel with the answers and the person
+  for(let i = 0; i < 44; i++){
+    let tempQuestion = servqualRefData[i].question
+    let tempSelected = servqualRefData[i].selected
+    worksheet.addRow({name: username, question: tempQuestion, selected: tempSelected});
+  }
+  // save excel
+
+  const file = await workbook.xlsx.writeBuffer();
+  
+  return file
+}
 module.exports.createServqualUser = createServqualUser
 module.exports.getServqualBfi = getServqualBfi
+module.exports.getUserExcelServqual = getUserExcelServqual

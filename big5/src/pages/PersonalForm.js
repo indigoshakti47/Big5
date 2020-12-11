@@ -44,13 +44,13 @@ export default function PersonalForm() {
 				Accept: "application/json",
 				"Content-Type": "application/json",
 			},
-		}).then(function (response) {
+		}).then((response) => {
 				console.log(response);
 
 				localStorage.setItem('testerId', response.data.data.user);
 				localStorage.setItem('testerUsername', formData.name);
 				setTimeout(() => router.push('bfi'), 1400);
-		}).catch(function (error) {
+		}).catch((error) => {
 				console.log(error);
 		});
 	}

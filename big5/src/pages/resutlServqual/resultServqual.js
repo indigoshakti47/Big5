@@ -9,6 +9,10 @@ const ResultServqual = () => {
 
   const [servqual, setServqual] = useState({})
 
+  const raiseInvoiceClicked = (url) => {
+    window.open(url, '_blank');
+  }
+  
   useEffect(() => {
     axios({
       url: `/api/servqual/`+localStorage.getItem('testerId'),
@@ -17,12 +21,32 @@ const ResultServqual = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       }
-    }).then(function (response) {
+    }).then((response) => {
       setServqual(Object.values(response.data.data)[0]);
-    }).catch(function (error) {
+    }).catch((error) => {
       console.log(error);
     });
   }, []);
+
+  const getExcel = () => {
+    console.log("Get excel");
+    axios({
+      url: `/api/servqual/excel/` + localStorage.getItem('testerId'),
+      method: 'get',
+      params: {
+        username: localStorage.getItem('testerUsername')
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }
+    }).then((response) => {
+      raiseInvoiceClicked(response.data.data)
+      console.log(response)
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="results">
@@ -117,6 +141,7 @@ const ResultServqual = () => {
         </p>
       </div>
       <div className="results__button">
+        <Button variant="contained" color="secondary" onClick={getExcel}>Get excel</Button>
         <Button variant="contained" color="secondary" onClick={() => window.location.href='/servqual' }>Next</Button>
       
       </div>

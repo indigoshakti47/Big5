@@ -43,10 +43,10 @@ export default function Servqual(props) {
 					Accept: "application/json",
 					"Content-Type": "application/json",
 				},
-			}).then(function (response) {
+			}).then((response) => {
 					console.log(response);
 					setTimeout(() => props.history.push(`/resultservqual`), 1400);
-			}).catch(function (error) {
+			}).catch((error) => {
 					console.log(error);
 			});
 

@@ -9,20 +9,44 @@ const ResultBfi = () => {
 
   const [bfi, setBfi] = useState({})
 
+  const raiseInvoiceClicked = (url) => {
+    window.open(url, '_blank');
+  }
+
   useEffect(() => {
     axios({
-      url: `/api/bfi/`+localStorage.getItem('testerId'),
+      url: `/api/bfi/` + localStorage.getItem('testerId'),
       method: 'get',
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       }
-    }).then(function (response) {
+    }).then((response) => {
       setBfi(Object.values(response.data.data)[0]);
-    }).catch(function (error) {
+    }).catch((error) => {
       console.log(error);
     });
   }, []);
+
+  const getExcel = () => {
+    console.log("Get excel");
+    axios({
+      url: `/api/bfi/excel/` + localStorage.getItem('testerId'),
+      method: 'get',
+      params: {
+        username: localStorage.getItem('testerUsername')
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }
+    }).then((response) => {
+      raiseInvoiceClicked(response.data.data)
+      console.log(response)
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="results">
@@ -101,19 +125,20 @@ const ResultBfi = () => {
           Titles
         </h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book. It has survived not only five centuries, but also the leap into 
-          electronic typesetting, remaining essentially unchanged. It was popularised in 
-          the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-          and more recently with desktop publishing software like Aldus PageMaker including 
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type
+          specimen book. It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+          and more recently with desktop publishing software like Aldus PageMaker including
           versions of Lorem Ipsum.
         </p>
       </div>
       <div className="results__button">
-        <Button variant="contained" color="secondary" onClick={() => window.location.href='/servqual' }>Next</Button>
-      
+        <Button variant="contained" color="secondary" onClick={getExcel}>Get excel</Button>
+        <Button variant="contained" color="secondary" onClick={() => window.location.href = '/servqual'}>Next</Button>
+
       </div>
     </div>
   );

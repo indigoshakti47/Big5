@@ -1,5 +1,6 @@
 const firebase = require("firebase-admin");
 const createError = require("http-errors");
+const exceljs = require("exceljs");
 
 const { reverse } = require("../helpers/bfiHelpers")
 
@@ -71,7 +72,7 @@ async function createBfiUser(user, username, bfi) {
   }
 
   /**
- * Get a profile stored in the firestore collection 'users' by the uid.
+ * Get results in the firestore collection 'bfi' by the uid.
  * 
  * @param {number} uid The user uid you are trying to search.
  * @return {Object} An object containing the bfi data.
@@ -91,5 +92,39 @@ async function getUserBfi(uid) {
   return data;
 }
 
+  /**
+ * Get a profile stored in the firestore collection 'users' by the uid.
+ * 
+ * @param {number} uid The user uid you are trying to search.
+ * 
+ * @return {Object} An object containing the bfi data.
+ */
+async function getUserExcelBfi(uid, username) {
+
+  let bfiRef = await firebase.firestore().collection('bfiAnswers').doc(uid).get();
+  let bfiRefData = bfiRef.data()
+  
+  const workbook = new exceljs.Workbook();
+  const worksheet = workbook.addWorksheet("BFI Results");
+  
+  worksheet.columns = [
+    {header: 'Name', key: 'name', width: 10},
+    {header: 'Question', key: 'question', width: 41}, 
+    {header: 'Selected', key: 'selected', width: 15,}
+  ];
+  
+  //Make an array for the excel with the answers and the person
+  for(let i = 0; i < 44; i++){
+    let tempQuestion = bfiRefData[i].question
+    let tempSelected = bfiRefData[i].selected
+    worksheet.addRow({name: username, question: tempQuestion, selected: tempSelected});
+  }
+  // save excel
+
+  const file = await workbook.xlsx.writeBuffer();
+  
+  return file
+}
 module.exports.createBfiUser = createBfiUser
 module.exports.getUserBfi = getUserBfi
+module.exports.getUserExcelBfi = getUserExcelBfi
