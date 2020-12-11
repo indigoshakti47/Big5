@@ -1,10 +1,10 @@
 import Login from '../pages/Login';
 import Servqual from '../pages/Servqual'
-import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
 import ResultBfi from '../pages/resultBfi/ResultBfi';
 import ResultServqual from '../pages/resutlServqual/ResultServqual';
 import PersonalForm from '../pages/PersonalForm';
+import Users from '../pages/Users'
 
 const ROUTES = [
   {
@@ -15,46 +15,46 @@ const ROUTES = [
     auth: false,
   },
   {
+    path: ['/users'],  
+    key: 'USERS',
+    exact: true,
+    component: Users,
+    auth: true,
+  },
+  {
     path: ['/form'], 
     key: 'FORM',
     exact: true,
     component: PersonalForm,
-    auth: false,
+    auth: true,
   },
   {
     path: ['/servqual'], 
     key: 'SERVQUAL',
     exact: true,
     component: Servqual,
-    auth: false,
-  },
-  {
-    path: '/register-product',
-    key: 'REGISTER_PRODUCT',
-    exact: true,
-    component: RegisterProduct,
-    auth: false,
+    auth: true,
   },
   {
     path: '/bfi',
     key: 'BFI',
     exact: true,
     component: BFI,
-    auth: false,
+    auth: true,
   },
   {
     path: '/resultbfi',
     key: 'RESULTBFI',
     exact: true,
     component: ResultBfi,
-    auth: false,
+    auth: true,
   },
   {
     path: '/resultservqual',
     key: 'RESULTSERVQUAL',
     exact: true,
     component: ResultServqual,
-    auth: false,
+    auth: true,
   }
 ];
 
