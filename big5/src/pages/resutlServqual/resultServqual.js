@@ -141,7 +141,7 @@ const ResultServqual = () => {
         </p>
       </div>
       <div className="results__button">
-        <Button variant="contained" color="secondary" onClick={getExcel}>Get excel</Button>
+        <Button style={{margin:10}} variant="contained" color="secondary" onClick={getExcel}>Get excel</Button>
         <Button variant="contained" color="secondary" onClick={() => window.location.href='/servqual' }>Next</Button>
       
       </div>

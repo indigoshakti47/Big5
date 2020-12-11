@@ -16,7 +16,7 @@ export default function PersonalForm() {
 		gender: '',
 		stratum: '',
 		educationalLevel: '',
-		nacionality: '',
+		Nationality: '',
 		profession: '',
 		hobbies: ''
 	});
@@ -68,7 +68,7 @@ export default function PersonalForm() {
 						<TextField className="PersonalInfo__input" required name="gender" onChange={handleChange} value={formData.gender} label="Gender" />
 						<TextField className="PersonalInfo__input" inputProps={{ min: 0, max: 6 }} type="number" required name="stratum" onChange={handleChange} value={formData.stratum} label="Stratum" />
 						<TextField className="PersonalInfo__input" required name="educationalLevel" onChange={handleChange} value={formData.educationalLevel} label="Educational Level" />
-						<TextField className="PersonalInfo__input" required name="nacionality" onChange={handleChange} value={formData.nacionality} label="Nacionality" />
+						<TextField className="PersonalInfo__input" required name="Nationality" onChange={handleChange} value={formData.Nationality} label="Nationality" />
 						<TextField className="PersonalInfo__input" required name="profession" onChange={handleChange} value={formData.profession} label="Profession" />
 						<TextField className="PersonalInfo__input" required name="hobbies" onChange={handleChange} value={formData.hobbies} label="Hobbies" />
 						<div className="PersonalInfo__button">

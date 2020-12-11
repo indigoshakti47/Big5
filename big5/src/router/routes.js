@@ -2,8 +2,8 @@ import Login from '../pages/Login';
 import Servqual from '../pages/Servqual'
 import RegisterProduct from '../pages/RegisterProduct';
 import BFI from '../pages/BFI';
-import ResultBfi from '../pages/ResultBfi/ResultBfi';
-import ResultServqual from '../pages/ResutlServqual/ResultServqual';
+import ResultBfi from '../pages/resultBfi/ResultBfi';
+import ResultServqual from '../pages/resutlServqual/ResultServqual';
 import PersonalForm from '../pages/PersonalForm';
 
 const ROUTES = [
