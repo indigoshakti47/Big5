@@ -9,6 +9,8 @@ import ListIcon from '@material-ui/icons/List';
 import MapIcon from '@material-ui/icons/Map'
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import Menu from '@material-ui/icons/Menu'
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import FingerprintIcon from '@material-ui/icons/Fingerprint';
 
 import Logo from './../assets/logo.svg';
 
@@ -17,8 +19,8 @@ const SideBar = ({ logout }) => {
     const [active, setActive] = useState(false); 
     const links = [
         createLink(HomeIcon, 'Home', '/dashboard'),
-        createLink(MapIcon, 'Big5', '/users'),
-        createLink(ListIcon, 'Lista de beneficiarios', '/lista-beneficiarios'),
+        createLink(EmojiPeopleIcon, 'Users', '/users'),
+        createLink(FingerprintIcon, 'Comparison', '/comparison'),
         createLink(ExitToApp, 'Logout', '', logout),
     ]
 

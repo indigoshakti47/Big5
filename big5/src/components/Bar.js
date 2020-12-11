@@ -13,7 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
-import MapIcon from '@material-ui/icons/Map'
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import FingerprintIcon from '@material-ui/icons/Fingerprint';
 import ExitToApp from '@material-ui/icons/ExitToApp'
 
 import SideBar from './Sidebar'; 
@@ -76,8 +77,8 @@ const PrimarySearchAppBar = ({ logout }) => {
 
   const links = [
     createLink(HomeIcon, 'Home', '/'),
-    createLink(MapIcon, 'Mapa', '/map'),
-    createLink(ListIcon, 'Lista de beneficiarios', '/lista-beneficiarios'),
+    createLink(EmojiPeopleIcon, 'users', '/users'),
+    createLink(FingerprintIcon, 'Compare', '/compare'),
     createLink(ExitToApp, 'Logout', '', logout),
   ]
 

@@ -6,6 +6,7 @@ import ResultServqual from '../pages/resutlServqual/ResultServqual';
 import PersonalForm from '../pages/PersonalForm';
 import Users from '../pages/Users'
 import Aspects from '../pages/Aspects'
+import Comparison from '../pages/Comparison'
 
 const ROUTES = [
   {
@@ -63,6 +64,13 @@ const ROUTES = [
     key: 'RESULTSERVQUAL',
     exact: true,
     component: ResultServqual,
+    auth: true,
+  },
+  {
+    path: '/comparison',
+    key: 'COMPARISON',
+    exact: true,
+    component: Comparison,
     auth: true,
   }
 ];
