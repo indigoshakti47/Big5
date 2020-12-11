@@ -1,71 +1,103 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import axios from "axios"
-import './PersonalForm.scss';
-
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import "./PersonalForm.scss";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 export default function PersonalForm() {
-	const [formData, setFormData] = useState({
-		user1: '',
-		user2: '',
-	});
+  const [formData, setFormData] = useState({
+    user1: "",
+    user2: "",
+  });
 
-	const router = useHistory();
+  const router = useHistory();
 
-	const handleChange = ({ target }) => {
-		setFormData({
-			...formData,
-			[target.name]: target.value
-		});
-	}
+  const handleChange = ({ target }) => {
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
+  };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(formData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
 
-		axios({
-			url: '/api/user',
-			method: 'post',
-			data: {
-				formData: formData
-			},
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-		}).then((response) => {
-				console.log(response);
-				localStorage.setItem('testerId', response.data.data.user);
-				localStorage.setItem('testerUsername', formData.name);
-				setTimeout(() => router.push('bfi'), 1400);
-		}).catch((error) => {
-				console.log(error);
-		});
-	}
+    axios({
+      url: "/api/user",
+      method: "post",
+      data: {
+        formData: formData,
+      },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("testerId", response.data.data.user);
+        localStorage.setItem("testerUsername", formData.name);
+        setTimeout(() => router.push("bfi"), 1400);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-	return (
+  return (
     <div className="PersonalInfo">
-
-			<Card>
-				<CardHeader className="PersonalInfo__title" title="Result comparison">
-				</CardHeader>
-				<CardContent>
-					<form onSubmit={handleSubmit}>
-						<TextField className="PersonalInfo__input" required name="user1" onChange={handleChange} value={formData.user1} label="User1" />
-						<TextField className="PersonalInfo__input" required name="user2" type="number" onChange={handleChange} value={formData.user2} label="User2" />
-						<div className="PersonalInfo__button">
-							<Button variant="contained" color="secondary" type="submit">
-								Next
-							</Button>
-						</div>
-					</form>
-				</CardContent>
-			</Card>
+      <Card>
+        <CardHeader
+          className="PersonalInfo__title"
+          title="Result comparison"
+        ></CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit}>
+			<Select
+			   className="PersonalInfo__input"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={{}}
+              onChange={handleChange}
+            >
+              <MenuItem value={{}}>User1</MenuItem>
+            </Select>
+            <Select
+			   className="PersonalInfo__input"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={{}}
+              onChange={handleChange}
+            >
+              <MenuItem value={{}}>User2</MenuItem>
+            </Select>
+			<TextField
+              className="PersonalInfo__input"
+              required
+              name="user2"
+              type="number"
+              onChange={handleChange}
+              value={formData.user2}
+              label="Código"
+            />
+            <div className="PersonalInfo__button">
+              <Button variant="contained" color="secondary" type="submit">
+                Next
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
