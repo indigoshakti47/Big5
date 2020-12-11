@@ -4,8 +4,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 
-export default function SimpleCard() {
+export default function SimpleCard(user, bfi) {
 
+  console.log(user, bfi)
   return (
       <div className="flip-card">
         <div className="flip-card-inner">
@@ -13,13 +14,13 @@ export default function SimpleCard() {
             <Card >
               <CardContent>
                 <Typography className={""} color="textSecondary">
-                  User's age
+                  {user.user.age}
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  User's name
+                  {user.user.name}
                 </Typography>
                 <Typography className={""} color="textSecondary">
-                  User's Gender
+                  {user.user.gender} 
                 </Typography>
               </CardContent>
             </Card>
@@ -28,7 +29,7 @@ export default function SimpleCard() {
             <Card >
               <CardContent>
                 <Typography className={""} color="textSecondary">
-                  O % C % E% A% N%
+                  O {bfi.openness}% C {bfi.conscientiousness}% E {bfi.extraversion}% A {bfi.agreeableness}% N {bfi.neuroticism}% 
                 </Typography>
                 <Typography variant="h5" component="h2">
                   See results
