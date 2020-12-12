@@ -73,11 +73,11 @@ const LoginPage = ({ login }) => {
       passwordError={passwordError}
       />
       <div className="chatbot-fab">
-        <Fab color="primary" aria-label="add" component={Link} to="/tracker">
+        <Fab color="primary" aria-label="add" component={Link} to="/">
           <MessagesIcon />
         </Fab>
         <div className="animated-text">
-          Revisa el estado de tu ayuda!
+          Analiza tu cliente con nosotros!
         </div>
       </div>
     </>
