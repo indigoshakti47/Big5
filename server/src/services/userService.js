@@ -51,21 +51,21 @@ async function createUserClient(formData) {
     educationalLevel,
     gender,
     hobbies,
-    nacionality,
+    Nationality,
     name,
     profession,
-    stratum,
-  } = userData;
+    stratum
+  } = formData;
 
   const data = {
-    age,
-    educationalLevel,
-    gender,
-    hobbies,
-    nacionality,
-    name,
-    profession,
-    stratum,
+    age: age,
+    educationalLevel: educationalLevel,
+    gender: gender,
+    hobbies: hobbies,
+    nationality: Nationality,
+    name: name,
+    profession: profession,
+    stratum: stratum
   };
 
   await userRef.set(data).catch(() => {
