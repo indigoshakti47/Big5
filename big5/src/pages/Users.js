@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom"
 import Card from "../../src/components/Card";
 import AddCard from "../../src/components/AddUser";
 import { getUsersWithResults } from '../api';
@@ -25,9 +26,12 @@ export default function Users() {
       </Grid>
       {
         users.map(({ user, bfi }) => (
-          <Grid key={user.id} item xs={12} sm={2} md={3}>
+
+        <Link to={{pathname: "/resulttotal", user: user.id, name: user.name }} >
+        <Grid key={user.id} item xs={12} sm={2} md={3}>
           <Card user={user} bfi={bfi}/>
         </Grid>
+        </Link>
         ))
       }
     </Grid>

@@ -4,6 +4,7 @@ import BFI from '../pages/BFI';
 import ResultBfi from '../pages/resultBfi/resultBfi';
 import ResultServqual from '../pages/resutlServqual/resultServqual';
 import resultAspect from '../pages/resultAspect/resultAspect';
+import resultTotal from '../pages/resultTotal/resultTotal';
 import PersonalForm from '../pages/PersonalForm';
 import Users from '../pages/Users'
 import Aspects from '../pages/Aspects'
@@ -75,6 +76,13 @@ const ROUTES = [
     auth: true,
   },
   {
+    path: '/resulttotal',
+    key: 'RESULTTOTAL',
+    exact: true,
+    component: resultTotal,
+    auth: true,
+  },
+  {
     path: '/comparison',
     key: 'COMPARISON',
     exact: true,
@@ -84,3 +92,4 @@ const ROUTES = [
 ];
 
 export default ROUTES;
+

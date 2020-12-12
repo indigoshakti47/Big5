@@ -1,44 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-
-import axios from "axios";
+import React from "react";
+import axios from "axios"
 import { ResponsiveRadar } from "@nivo/radar";
 import { Button } from "@material-ui/core";
-import "./styles.scss";
 
-const ResultServqual = () => {
-  const [servqual, setServqual] = useState({});
+const ServqualResult = (props) => {
 
   const raiseInvoiceClicked = (url) => {
     window.open(url, "_blank");
   };
 
-  const router = useHistory();
+  const servqual = props.servqual
+  const id = props.id
+  const name = props.name
 
-  useEffect(() => {
-    axios({
-      url: `/api/servqual/` + localStorage.getItem("testerId"),
-      method: "get",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        setServqual(Object.values(response.data.data)[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+  console.log(props)
   const getExcel = () => {
     console.log("Get excel");
     axios({
-      url: `/api/servqual/excel/` + localStorage.getItem("testerId"),
+      url: `/api/servqual/excel/` + id,
       method: "get",
       params: {
-        username: localStorage.getItem("testerUsername"),
+        username: name,
       },
       headers: {
         Accept: "application/json",
@@ -213,16 +195,9 @@ const ResultServqual = () => {
         >
           Get excel
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => router.push("aspects")}
-        >
-          Next
-        </Button>
       </div>
     </div>
   );
-};
+}
 
-export default ResultServqual;
+export default ServqualResult

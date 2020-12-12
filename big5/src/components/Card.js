@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 
 export default function SimpleCard({user, bfi}) {
 
-  console.log(user, bfi)
   return (
       <div className="flip-card">
         <div className="flip-card-inner">
