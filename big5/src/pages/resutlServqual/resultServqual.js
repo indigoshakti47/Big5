@@ -127,18 +127,27 @@ const ResultServqual = () => {
       </div>
       <div className="results__analysis">
         <h2>
-          Titles
+          Analysis
         </h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book. It has survived not only five centuries, but also the leap into 
-          electronic typesetting, remaining essentially unchanged. It was popularised in 
-          the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-          and more recently with desktop publishing software like Aldus PageMaker including 
-          versions of Lorem Ipsum.
+        Customer Relationship is at the heart of all successful companies. It is the single most important factor that influences people in their choice between one company and another. Customer care has also been identified as an area in which there are large skills gaps. The customer has also been identified as an area in which there are large skills gaps. 
+
         </p>
+        <p>
+        The SERVICE QUALITY test is widely used to identify the gap in perception between what a company believes is being delivered to customers and the actual perception of the customer. There are 5 gaps and any one of them can lead to a lack of satisfactory experience. 
+        </p>
+        <ol>
+        <li>R = Reliability is the firm’s ability to perform the promise service accurately and dependably. {servqual.username} scored {servqual.reliabilityExpectation} for expectations and {servqual.reliabilityPerceptions} for perceptions.
+</li>
+          <li>A= Assurance is knowledge and courtesy of employees and their ability to inspire trust and confidence. {servqual.username} scored {servqual.assuranceExpectation} for expectations and {servqual.assurancePerceptions} for perceptions.
+</li>
+          <li>Tangibles = refers to physical facilities, equipment and appearance of personnel. {servqual.username} scored {servqual.tangibilityExpectation} for expectations and {servqual.tangibilityPerceptions} for perceptions.
+</li>
+          <li>E = Empathy is caring and individualized attention paid to customers. {servqual.username} scored {servqual.empathyExpectation} for expectations and {servqual.empathyPerceptions} for perceptions.
+</li>
+          <li>R = Responsiveness is the firm’s willingness to help customer and provide prompt service. {servqual.username} scored {servqual.responsivenessExpectation} for expectations and {servqual.responsivenessPerceptions} for perceptions.
+</li>
+        </ol>
       </div>
       <div className="results__button">
         <Button style={{margin:10}} variant="contained" color="secondary" onClick={getExcel}>Get excel</Button>
