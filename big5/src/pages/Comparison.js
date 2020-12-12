@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { getUsers } from '../api';
+
 import "./PersonalForm.scss";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -18,6 +20,8 @@ export default function PersonalForm() {
     user1: "",
     user2: "",
   });
+
+  const [users, setUsers] = useState([]);
 
   const router = useHistory();
 
@@ -64,8 +68,9 @@ export default function PersonalForm() {
         <CardContent>
           <form onSubmit={handleSubmit}>
 			<Select
-			   className="PersonalInfo__input"
+			   className="PersonalInfo__select"
               labelId="demo-simple-select-label"
+              label="User 1"
               id="demo-simple-select"
               value={{}}
               onChange={handleChange}
@@ -73,7 +78,8 @@ export default function PersonalForm() {
               <MenuItem value={{}}>User1</MenuItem>
             </Select>
             <Select
-			   className="PersonalInfo__input"
+                          label="User 2"
+			   className="PersonalInfo__select"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={{}}
@@ -81,15 +87,6 @@ export default function PersonalForm() {
             >
               <MenuItem value={{}}>User2</MenuItem>
             </Select>
-			<TextField
-              className="PersonalInfo__input"
-              required
-              name="user2"
-              type="number"
-              onChange={handleChange}
-              value={formData.user2}
-              label="Código"
-            />
             <div className="PersonalInfo__button">
               <Button variant="contained" color="secondary" type="submit">
                 Next

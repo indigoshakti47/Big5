@@ -1,38 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 import Card from "../../src/components/Card";
 import AddCard from "../../src/components/AddUser";
+import { getUsersWithResults } from '../api';
 
 import Grid from "@material-ui/core/Grid";
-
-const requestParams = (url) => ({
-  url,
-  method: "get",
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
-});
-
-async function getUsersWithResults() {
-  const { data } = await axios(requestParams("/api/user"));
-  const users = [];
-  for (const key in data.data.users) {
-    users.push({
-      id: key,
-      ...data.data.users[key]
-    });
-  }
-
-  const promises = users.map(async user => {
-    const { data } = await axios(requestParams( `/api/bfi/${user.id}`));
-    const bfi = Object.values(data.data)[0] || {};
-    return { bfi, user };
-  });
-
-  return Promise.all(promises);
-}
 
 export default function Users() {
   const [users, setUsers] = useState([]);
