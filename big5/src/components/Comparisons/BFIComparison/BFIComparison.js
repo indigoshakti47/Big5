@@ -22,22 +22,22 @@ const BFIComparison = (props) => {
             {
               type: "Agreeableness/Antagonism",
               [bfi1.username]: bfi1.agreeableness,
-              [bfi2.username]: bfi2.extraversion,
+              [bfi2.username]: bfi2.agreeableness,
             },
             {
               type: "Conscientiousness/Lack of direction",
               [bfi1.username]: bfi1.conscientiousness,
-              [bfi2.username]: bfi2.extraversion,
+              [bfi2.username]: bfi2.conscientiousness,
             },
             {
               type: "Neuroticism/Emotional stability",
               [bfi1.username]: bfi1.neuroticism,
-              [bfi2.username]: bfi2.extraversion,
+              [bfi2.username]: bfi2.neuroticism,
             },
             {
               type: "Openness/Closedness to experience",
               [bfi1.username]: bfi1.openness,
-              [bfi2.username]: bfi2.extraversion,
+              [bfi2.username]: bfi2.openness,
             },
           ]}
           keys={[[bfi1.username], [bfi2.username]]}
