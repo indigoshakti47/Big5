@@ -28,7 +28,7 @@ export default function Users() {
         users.map(({ user, bfi }) => (
 
         <Link to={{pathname: "/resulttotal", user: user.id, name: user.name }} >
-        <Grid key={user.id} item xs={12} sm={2} md={3}>
+        <Grid key={user.id} item xs={12} sm={2} md={3} spacing={3}>
           <Card user={user} bfi={bfi}/>
         </Grid>
         </Link>
