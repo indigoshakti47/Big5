@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { getUsers } from '../api';
@@ -17,15 +17,33 @@ import Select from "@material-ui/core/Select";
 
 export default function PersonalForm() {
   const [formData, setFormData] = useState({
-    user1: "",
-    user2: "",
+    user1: null,
+    user2: null,
   });
 
   const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    getData();
+  }, []);
+
   const router = useHistory();
 
+  const getData = async () =>{
+    const users = await getUsers();
+    setUsers(users);
+  }
+  
   const handleChange = ({ target }) => {
+    const oposite = target.name === 'user1' ? 'user2' : 'user1';
+
+    if (target.value === formData[oposite]) {
+      return setFormData({
+        ...formData,
+        [target.name]: null
+      });
+    }
+
     setFormData({
       ...formData,
       [target.name]: target.value,
@@ -67,26 +85,38 @@ export default function PersonalForm() {
         ></CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
-			<Select
-			   className="PersonalInfo__select"
-              labelId="demo-simple-select-label"
-              label="User 1"
-              id="demo-simple-select"
-              value={{}}
-              onChange={handleChange}
-            >
-              <MenuItem value={{}}>User1</MenuItem>
-            </Select>
-            <Select
-                          label="User 2"
-			   className="PersonalInfo__select"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={{}}
-              onChange={handleChange}
-            >
-              <MenuItem value={{}}>User2</MenuItem>
-            </Select>
+            <FormControl className="PersonalInfo__select">
+              <InputLabel id="user1-label">User 1</InputLabel>
+              <Select
+                labelId="user1-label"
+                id="demo-simple-select"
+                name="user1"
+                value={formData.user1}
+                onChange={handleChange}
+              >
+                {
+                  users.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>{name}</MenuItem>
+                  ))
+                }
+              </Select>
+            </FormControl>
+            <FormControl className="PersonalInfo__select">
+              <InputLabel id="user2-label">User 2</InputLabel>
+              <Select
+                labelId="user2-label"
+                id="demo-simple-select"
+                name="user2"
+                value={formData.user2}
+                onChange={handleChange}
+              >
+                {
+                  users.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>{name}</MenuItem>
+                  ))
+                }
+              </Select>
+            </FormControl>
             <div className="PersonalInfo__button">
               <Button variant="contained" color="secondary" type="submit">
                 Next

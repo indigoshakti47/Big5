@@ -9,6 +9,7 @@ import PersonalForm from '../pages/PersonalForm';
 import Users from '../pages/Users'
 import Aspects from '../pages/Aspects'
 import Comparison from '../pages/Comparison'
+import Dashboard from '../pages/Dashboard'
 
 const ROUTES = [
   {
@@ -87,6 +88,13 @@ const ROUTES = [
     key: 'COMPARISON',
     exact: true,
     component: Comparison,
+    auth: true,
+  },
+  {
+    path: '/dashboard',
+    key: 'DASHBOARD',
+    exact: true,
+    component: Dashboard,
     auth: true,
   }
 ];
