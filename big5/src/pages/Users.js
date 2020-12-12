@@ -6,49 +6,44 @@ import AddCard from "../../src/components/AddUser";
 
 import Grid from "@material-ui/core/Grid";
 
+const requestParams = (url) => ({
+  url,
+  method: "get",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});
+
+async function getUsersWithResults() {
+  const { data } = await axios(requestParams("/api/user"));
+  const users = [];
+  for (const key in data.data.users) {
+    users.push({
+      id: key,
+      ...data.data.users[key]
+    });
+  }
+
+  const promises = users.map(async user => {
+    const { data } = await axios(requestParams( `/api/bfi/${user.id}`));
+    const bfi = Object.values(data.data)[0] || {};
+    return { bfi, user };
+  });
+
+  return Promise.all(promises);
+}
+
 export default function Users() {
-  const [user, setUser] = useState([]);
-  const [userId, setUserId] = useState([]);
-  const [userBfi, setUserBfi] = useState({})
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios({
-      url: "/api/user",
-      method: "get",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        setUser(Object.values(response.data.data.users));
-        setUserId(Object.keys(response.data.data.users))
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getData();
     }, []);
 
-  const createCards = () => {
-    return user.map((data, index) => {
-
-      axios({
-        url: `/api/bfi/${userId[index]}`,
-        method: "get",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }).then((res) => {
-        setUserBfi(Object.values(res.data.data)[0]);
-      });
-
-      return (
-        <Grid item xs={12} sm={2} md={3}>
-          <Card user={data} bfi={userBfi}/>
-        </Grid>
-      )
-    })
+  const getData = async () => {
+    const data = await getUsersWithResults();
+    setUsers(data);
   }
 
   return (
@@ -56,7 +51,13 @@ export default function Users() {
       <Grid item xs={12} sm={2} md={3}>
         <AddCard />
       </Grid>
-      {createCards()}
+      {
+        users.map(({ user, bfi }) => (
+          <Grid key={user.id} item xs={12} sm={2} md={3}>
+          <Card user={user} bfi={bfi}/>
+        </Grid>
+        ))
+      }
     </Grid>
   );
-}
+  }

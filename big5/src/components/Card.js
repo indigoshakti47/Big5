@@ -4,7 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 
-export default function SimpleCard(user, bfi) {
+export default function SimpleCard({user, bfi}) {
 
   console.log(user, bfi)
   return (
@@ -14,13 +14,13 @@ export default function SimpleCard(user, bfi) {
             <Card >
               <CardContent>
                 <Typography className={""} color="textSecondary">
-                  {user.user.age}
+                  {user.age}
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  {user.user.name}
+                  {user.name}
                 </Typography>
                 <Typography className={""} color="textSecondary">
-                  {user.user.gender} 
+                  {user.gender} 
                 </Typography>
               </CardContent>
             </Card>
