@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import "./styles.scss";
 
 const ResultBfi = () => {
+  const [mount, setMount] = useState(false);
   const [aspects, setAspects] = useState({});
 
   const raiseInvoiceClicked = (url) => {
@@ -25,8 +26,9 @@ const ResultBfi = () => {
       },
     })
       .then((response) => {
-        console.log(Object.values(response.data.data));
+        console.log(Object.values(response.data.data)); 
         setAspects(Object.values(response.data.data));
+        setMount(true)
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +57,7 @@ const ResultBfi = () => {
       });
   };
 
-  return (
+  return !mount ? <p></p> : (
     <div className="results">
       <h1 className="results__title">Aspects results</h1>
       <div className="results__chart">

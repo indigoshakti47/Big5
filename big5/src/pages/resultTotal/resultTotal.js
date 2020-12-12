@@ -8,6 +8,7 @@ import ServqualResult from "../../components/servqualResult";
 import AspectsResult from "../../components/aspectsResult";
 
 const ResultTotal = (props) => {
+  const [mount, setMount] = useState(false);
   const [aspects, setAspects] = useState({});
   const [bfi, setBfi] = useState({});
   const [servqual, setServqual] = useState({});
@@ -25,6 +26,7 @@ const ResultTotal = (props) => {
       },
     })
       .then((response) => {
+        console.log(response)
         setBfi(Object.values(response.data.data)[0]);
       })
       .catch((error) => {
@@ -40,22 +42,39 @@ const ResultTotal = (props) => {
       },
     })
       .then((response) => {
+        console.log(response)
         setServqual(Object.values(response.data.data)[0]);
       })
       .catch((error) => {
         console.log(error);
       });
 
-      
+      axios({
+        url: `/api/aspects/${id}`,
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          console.log(response)
+          
+          setAspects(Object.values(response.data.data));
+          setMount(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-    // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
-  return (
+  console.log(aspects)
+  return !mount ? <p></p> : (
     <>
       <BfiResult bfi={bfi} id={id} name={name} />
       <ServqualResult servqual={servqual} id={id} name={name} />
-      <AspectsResult id={id} name={name} />
+      <AspectsResult aspects={aspects} id={id} name={name} />
     </>
   );
 };
