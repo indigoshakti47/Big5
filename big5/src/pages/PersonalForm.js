@@ -47,9 +47,9 @@ export default function PersonalForm() {
 		}).then((response) => {
 				console.log(response);
 
-				//localStorage.setItem('testerId', response.data.data.user);
-				//localStorage.setItem('testerUsername', formData.name);
-				//setTimeout(() => router.push('bfi'), 1400);
+				localStorage.setItem('testerId', response.data.data.user);
+				localStorage.setItem('testerUsername', formData.name);
+				setTimeout(() => router.push('bfi'), 1400);
 		}).catch((error) => {
 				console.log(error);
 		});
