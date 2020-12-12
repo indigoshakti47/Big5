@@ -90,7 +90,7 @@
   color: #fff;
   font-size: 16px;
   letter-spacing: 1px;
-  background: #3bbbb2;
+  background: #f50057;
   cursor: pointer;
   margin-bottom: 14px;
 
@@ -643,6 +643,8 @@ bottom: 0px;
   color: black;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  margin-right: 7%;
+  margin-left: 3%;
 }
 .flip-card-back{
   transform: rotateY(180deg);
@@ -672,4 +674,7 @@ body{
 }
 .layout-children{
   margin-left: 70px;
+}
+.no-underline{
+  text-decoration: none !important;
 }

@@ -13,7 +13,7 @@ const Login = (props) => {
     <Box display="flex" justifyContent="center" alignItems="center" height="100%">
     <Grid container justify="center" alignItems="center" style={{ height: "100%" }}>
       <Grid item xs={12} sm={6} md={5} lg={3} xl={3} style={{ padding: "0.5rem" }}>
-        <Paper elevation={3} style={{ padding: "2rem 1rem" }}>
+        <Paper elevation={3} style={{ marginTop: "25%", padding: "2rem 1rem" }}>
           <Box display="flex" justifyContent="center" marginBottom="1.5rem">
             <Typography variant="h4" style={{fontWeight: 500}}>{
               hasAccount ? "Iniciar sesión" : "Registrarse"

@@ -10,7 +10,7 @@ export default function SimpleCard({user, bfi}) {
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
-            <Card >
+            <Card spacing={2}>
               <CardContent>
                 <Typography className={""} color="textSecondary">
                   {user.age}
@@ -34,7 +34,7 @@ export default function SimpleCard({user, bfi}) {
                   See results
                 </Typography>
                 <Typography className={""} color="textSecondary">
-                  R% A% T% E% R%
+                 RATER  
                 </Typography>
               </CardContent>
             </Card>
