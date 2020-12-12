@@ -3,6 +3,7 @@ import Servqual from '../pages/Servqual'
 import BFI from '../pages/BFI';
 import ResultBfi from '../pages/resultBfi/resultBfi';
 import ResultServqual from '../pages/resutlServqual/resultServqual';
+import resultAspect from '../pages/resultAspect/resultAspect';
 import PersonalForm from '../pages/PersonalForm';
 import Users from '../pages/Users'
 import Aspects from '../pages/Aspects'
@@ -64,6 +65,13 @@ const ROUTES = [
     key: 'RESULTSERVQUAL',
     exact: true,
     component: ResultServqual,
+    auth: true,
+  },
+  {
+    path: '/resultaspect',
+    key: 'RESULTASPECT',
+    exact: true,
+    component: resultAspect,
     auth: true,
   },
   {

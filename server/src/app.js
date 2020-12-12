@@ -23,6 +23,7 @@ const userRoute = require('./routes/user');
 const accountRoute = require('./routes/account');
 const bfiRoute = require('./routes/bfi');
 const servqualRoute = require('./routes/servqual');
+const aspectsRoute = require('./routes/aspects');
 
 const app = express();
 app.use(cors());
@@ -36,6 +37,7 @@ app.use('/api/', userRoute);
 app.use('/api/', accountRoute);
 app.use('/api/', bfiRoute);
 app.use('/api/', servqualRoute);
+app.use('/api/', aspectsRoute);
 
 //React route
 app.use(express.static(path.join(__dirname, '../../big5/build')));

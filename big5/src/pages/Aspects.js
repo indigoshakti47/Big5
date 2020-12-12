@@ -32,10 +32,10 @@ export default function Aspects(props) {
 		} else {
 
 			axios({
-				url: '/api/servqual',
+				url: '/api/aspects',
 				method: 'post',
 				data: {
-					"servqual": newSelected,
+					"aspects": newSelected,
 					"user": localStorage.getItem('testerId'),
 					"username": localStorage.getItem('testerUsername')
 				},
@@ -45,7 +45,7 @@ export default function Aspects(props) {
 				},
 			}).then((response) => {
 					console.log(response);
-					setTimeout(() => props.history.push(`/resultservqual`), 1400);
+					//setTimeout(() => props.history.push(`/resultservqual`), 1400);
 			}).catch((error) => {
 					console.log(error);
 			});
