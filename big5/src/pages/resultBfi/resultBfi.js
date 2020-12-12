@@ -126,7 +126,7 @@ const ResultBfi = () => {
       <div className="results__analysis">
         <h2>Analysis</h2>
         <p>The Big Five consists of openness, conscientiousness, extraversion, agreeableness, and neuroticism. Each of the five break down into two sub-categories that are as follows: Neuroticism into Volatility and Withdrawal; Extraversion into Enthusiasm and Assertiveness; Openness to Experience into Intellect and Openness; Conscientiousness into Industriousness and Orderliness; and Agreeableness into Compassion and Politeness. </p>
-
+        <br/>
         <h3>{bfi.openness >= 50 ? "Openness" : "Closedness to experience"} {bfi.openness}</h3>
         <p>
           {bfi.openness >= 50
