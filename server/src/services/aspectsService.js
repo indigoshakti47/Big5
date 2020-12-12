@@ -66,7 +66,7 @@ async function getUserExcelBfi(uid, username) {
   ];
   
   //Make an array for the excel with the answers and the person
-  for(let i = 0; i < 44; i++){
+  for(let i = 0; i < 5; i++){
     let tempQuestion = aspectsRefData[i].question
     let tempSelected = aspectsRefData[i].selected
     worksheet.addRow({name: username, question: tempQuestion, selected: tempSelected});
