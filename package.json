@@ -10,7 +10,7 @@
     "babel-build": "babel -d ./build ./server/src -s",
     "clean": "rm -rf ./build && mkdir build",
     "deploy": "serverless deploy",
-    "heroku-prebuild": "cd ./big5 && npm install && npm run build"
+    "heroku-prebuild": "cd ./big5 && yarn && yarn run build"
   },
   "dependencies": {
     "@babel/cli": "^7.10.1",
