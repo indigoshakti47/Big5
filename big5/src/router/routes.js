@@ -5,6 +5,7 @@ import ResultBfi from '../pages/resultBfi/resultBfi';
 import ResultServqual from '../pages/resutlServqual/resultServqual';
 import resultAspect from '../pages/resultAspect/resultAspect';
 import resultTotal from '../pages/resultTotal/resultTotal';
+import ComparisonResult from '../pages/ComparisonResult/ComparisonResult';
 import PersonalForm from '../pages/PersonalForm';
 import Users from '../pages/Users'
 import Aspects from '../pages/Aspects'
@@ -88,6 +89,13 @@ const ROUTES = [
     key: 'COMPARISON',
     exact: true,
     component: Comparison,
+    auth: true,
+  },
+  {
+    path: '/compresult',
+    key: 'COMPARISONRESULT',
+    exact: true,
+    component: ComparisonResult,
     auth: true,
   },
   {

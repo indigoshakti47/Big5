@@ -188,7 +188,7 @@ const ResultBfi = () => {
       <div className="results__analysis">
         <h2>Analysis</h2>
         <br/>
-        <h3>{"Design and beauty " + aspects[0].selected*10}</h3>
+        <h3>{localStorage.getItem("testerUsername")}</h3>
         <p>
           {aspects[0].selected*10 >= 70
             ? `${localStorage.getItem("testerUsername")} has a high focus on design and beauty`
@@ -231,7 +231,7 @@ const ResultBfi = () => {
           {aspects[4].selected*10 >= 70
             ? `${localStorage.getItem("testerUsername")} has a high focus on ease of use`
             : 
-            (aspects[2].selected*10 >= 40 ?
+            (aspects[4].selected*10 >= 40 ?
             `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to ease of use`
             : `They have low levels of importance for details and unique elements`)}
         </p>

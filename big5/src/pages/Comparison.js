@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { getUsers } from '../api';
 
 import "./PersonalForm.scss";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
@@ -54,30 +51,21 @@ export default function PersonalForm() {
     e.preventDefault();
     console.log(formData);
 
-    axios({
-      url: "/api/user",
-      method: "post",
-      data: {
-        formData: formData,
-      },
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+    let user1 = users.find((user) => user.id === formData.user1);
+    let user2 = users.find((user) => user.id === formData.user2);
+
+    console.log(user1, user2)
+
+    router.push({
+      pathname: "/compresult",
+      state:{  user1, user2 }
     })
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem("testerId", response.data.data.user);
-        localStorage.setItem("testerUsername", formData.name);
-        setTimeout(() => router.push("bfi"), 1400);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
+  
   return (
     <div className="PersonalInfo">
+      {console.log(users)}
       <Card>
         <CardHeader
           className="PersonalInfo__title"
