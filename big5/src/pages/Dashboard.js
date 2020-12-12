@@ -11,6 +11,9 @@ export default class Dashboard extends Component {
             <div className="flip-card-inner">
               <div className="flip-card-front">
               <Link to={'/form'}>
+              <Typography className={""} color="textSecondary">
+                            Hypothesis
+                </Typography>
               <Card>
                     <CardContent>
                         <div className="text-center">
