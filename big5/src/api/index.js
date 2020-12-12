@@ -11,11 +11,7 @@ const requestParams = (url) => ({
 
 export async function getUsers() {
 	const { data } = await axios(requestParams("/api/user"));
-	return data.data.users;
-}
-
-export async function getUsersWithResults() {
-	const rawUsers = await getUsers();
+	const rawUsers = data.data.users;
 	const users = [];
 	for (const key in rawUsers) {
 		users.push({
@@ -23,6 +19,11 @@ export async function getUsersWithResults() {
 			...rawUsers[key]
 		});
 	}
+	return users;
+}
+
+export async function getUsersWithResults() {
+	const users = await getUsers();	
 
 	const promises = users.map(async user => {
 		const { data } = await axios(requestParams( `/api/bfi/${user.id}`));

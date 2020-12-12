@@ -195,6 +195,44 @@ const ResultBfi = () => {
             `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to design and beauty`
             : `They have low levels of importance for design and beauty`)}
         </p>
+
+        <p>
+          {aspects[1].selected*10 >= 70
+            ? `${localStorage.getItem("testerUsername")} has a high focus on speed, precision and efficiency`
+            : 
+            (aspects[1].selected*10 >= 40 ?
+            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to speed, precision and efficiency`
+            : `They have low levels of importance for speed, precision and efficiency`)}
+        </p>
+
+        <p>
+          {aspects[2].selected*10 >= 70
+            ? `${localStorage.getItem("testerUsername")} has a high focus on details and unique elements`
+            : 
+            (aspects[2].selected*10 >= 40 ?
+            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to details and unique elements`
+            : `They have low levels of importance for details and unique elements`)}
+        </p>
+
+
+        <p>
+          {aspects[3].selected*10 >= 70
+            ? `${localStorage.getItem("testerUsername")} has a high focus on price`
+            : 
+            (aspects[3].selected*10 >= 40 ?
+            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to price`
+            : `They have low levels of importance for price`)}
+        </p>
+
+
+        <p>
+          {aspects[4].selected*10 >= 70
+            ? `${localStorage.getItem("testerUsername")} has a high focus on ease of use`
+            : 
+            (aspects[2].selected*10 >= 40 ?
+            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to ease of use`
+            : `They have low levels of importance for details and unique elements`)}
+        </p>
       </div>
       <div className="results__button">
         <Button
