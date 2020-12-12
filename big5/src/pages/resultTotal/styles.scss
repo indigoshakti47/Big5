@@ -1,6 +1,16 @@
-.results{
-  
-  &__title{
+.userContainer {
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  height: 30vh;
+  width: 35%;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.results {
+  &__title {
     text-align: center;
     padding: 20px;
   }
@@ -8,10 +18,10 @@
   &__chart {
     margin: auto;
     padding: 20px;
-    height:50vh;
-    width:50%;
+    height: 50vh;
+    width: 50%;
     background: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
   }
 
@@ -21,25 +31,24 @@
     margin-top: 20px;
     padding-top: 20px;
     padding: 10px;
-    width:50%;
+    width: 50%;
     background: white;
-    .h2{
+    .h2 {
       text-align: center;
     }
-    .h3{
+    .h3 {
       text-align: left;
     }
   }
 
-  &__button{
+  &__button {
     text-align: center;
   }
-
 }
 
 .chart:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.MuiButton-containedPrimary{
+.MuiButton-containedPrimary {
   margin: auto !important;
 }

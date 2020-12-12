@@ -75,13 +75,19 @@ const ResultTotal = (props) => {
     <p></p>
   ) : (
     <>
-      <div style={{marginLeft:"auto", marginRight:"auto"}}><strong>Name: </strong> { user.name }</div>
-      <div><strong>Age: </strong>{ user.age }</div>
-      <div><strong>Educational Level: </strong>{ user.educationalLevel }</div>
-      <div><strong>Gender: </strong>{ user.gender }</div>
-      <div><strong>Hobbies: </strong>{ user.hobbies }</div>
-      <div><strong>Nacionality: </strong>{ user.nationality }</div>
-      <div><strong>Profession: </strong>{ user.profession }</div>
+      <div className="userContainer">
+        <h2>User </h2>
+        <br></br>
+        <div><strong>Name: </strong> { user.name }</div>
+        <div><strong>Age: </strong>{ user.age }</div>
+        <div><strong>Educational Level: </strong>{ user.educationalLevel }</div>
+        <div><strong>Gender: </strong>{ user.gender }</div>
+        <div><strong>Stratum: </strong>{ user.stratum }</div>
+        <div><strong>Hobbies: </strong>{ user.hobbies }</div>
+        <div><strong>Nationality: </strong>{ user.nationality }</div>
+        <div><strong>Profession: </strong>{ user.profession }</div>
+      </div>
+      
       <BfiResult bfi={bfi} id={id} name={name} />
       <ServqualResult servqual={servqual} id={id} name={name} />
       <AspectsResult aspects={aspects} id={id} name={name} />
