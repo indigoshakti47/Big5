@@ -127,11 +127,11 @@ const ComparisonResult = (props) => {
 
   console.log(aspects1, aspects2);
   return !mount ? <p></p> : (
-    <>
+    <div className="elements">
       <BFIComparison bfi1={bfi1} bfi2={bfi2} />
       <ServqualComparison servqual1={srv1} servqual2={srv2} />
       <AspectComparison aspects={aspects1} aspects2={aspects2} name1={user1.name} name2={user2.name} />
-    </>
+    </div>
   );
 };
 

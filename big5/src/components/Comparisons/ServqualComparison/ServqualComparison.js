@@ -1,5 +1,7 @@
 import React from "react";
 import { ResponsiveRadar } from "@nivo/radar";
+import CustomTable from "../../CustomTables/CustomTable"
+import CustomTable1 from "../../CustomTables/CustomTable1"
 
 const ServqualResult = (props) => {
 
@@ -144,7 +146,8 @@ const ServqualResult = (props) => {
       </div>
       <div className="results__analysis">
         <h2>Analysis</h2>
-      
+        {<CustomTable servqual={servqual1} servqual2={servqual2}/>}
+        {<CustomTable1 servqual={servqual1} servqual2={servqual2}/>}
       </div>
       <div className="results__button">
 

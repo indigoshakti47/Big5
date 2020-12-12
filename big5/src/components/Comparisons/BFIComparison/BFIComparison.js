@@ -85,7 +85,7 @@ const BFIComparison = (props) => {
           ]}
         />
       </div>
-      <div className="results__analysis">
+      <div className="results_bfi__analysis">
         
       </div>
       <div className="results__button">

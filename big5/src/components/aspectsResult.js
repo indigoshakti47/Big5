@@ -46,32 +46,32 @@ const AspectsResult = (props) => {
           data={[
             {
               question: "Design and beauty",
-              [localStorage.getItem("testerUsername")]: aspects[0].selected*10,
-              [`${localStorage.getItem("testerUsername")}Color`]: "hsl(41, 70%, 50%)"
+              [name]: aspects[0].selected*10,
+              [`${name}Color`]: "hsl(41, 70%, 50%)"
             },
             {
               question: "Speed, precision and efficiency",
-              [localStorage.getItem("testerUsername")]: aspects[1].selected*10,
-              [`${localStorage.getItem("testerUsername")}Color`]: "hsl(270, 70%, 50%)"
+              [name]: aspects[1].selected*10,
+              [`${name}Color`]: "hsl(270, 70%, 50%)"
             },
             {
               question: "Details and unique elements",
-              [localStorage.getItem("testerUsername")]: aspects[2].selected*10,
-              [`${localStorage.getItem("testerUsername")}Color`]: "hsl(11, 70%, 50%)"
+              [name]: aspects[2].selected*10,
+              [`${name}Color`]: "hsl(11, 70%, 50%)"
             },
             {
               question: "Price",
-              [localStorage.getItem("testerUsername")]: aspects[3].selected*10,
-              [`${localStorage.getItem("testerUsername")}Color`]: "hsl(9, 70%, 50%)"
+              [name]: aspects[3].selected*10,
+              [`${name}Color`]: "hsl(9, 70%, 50%)"
             },
             {
               question: "Ease of use",
-              [localStorage.getItem("testerUsername")]: aspects[4].selected*10,
-              [`${localStorage.getItem("testerUsername")}Color`]: "hsl(156, 70%, 50%)"
+              [name]: aspects[4].selected*10,
+              [`${name}Color`]: "hsl(156, 70%, 50%)"
             },
           ]}
           keys={[
-            localStorage.getItem("testerUsername")
+            name
           ]}
           indexBy="question"
           margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
@@ -169,51 +169,51 @@ const AspectsResult = (props) => {
       <div className="results__analysis">
         <h2>Analysis</h2>
         <br/>
-        <h3>{"Design and beauty " + aspects[0].selected*10}</h3>
+        <h3>{name}</h3>
         <p>
           {aspects[0].selected*10 >= 70
-            ? `${localStorage.getItem("testerUsername")} has a high focus on design and beauty`
+            ? `${name} has a high focus on design and beauty`
             : 
             (aspects[0].selected*10 >= 40 ?
-            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to design and beauty`
+            `${name} is indifferent to the dimension pertaining to design and beauty`
             : `They have low levels of importance for design and beauty`)}
         </p>
 
         <p>
           {aspects[1].selected*10 >= 70
-            ? `${localStorage.getItem("testerUsername")} has a high focus on speed, precision and efficiency`
+            ? `${name} has a high focus on speed, precision and efficiency`
             : 
             (aspects[1].selected*10 >= 40 ?
-            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to speed, precision and efficiency`
+            `${name} is indifferent to the dimension pertaining to speed, precision and efficiency`
             : `They have low levels of importance for speed, precision and efficiency`)}
         </p>
 
         <p>
           {aspects[2].selected*10 >= 70
-            ? `${localStorage.getItem("testerUsername")} has a high focus on details and unique elements`
+            ? `${name} has a high focus on details and unique elements`
             : 
             (aspects[2].selected*10 >= 40 ?
-            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to details and unique elements`
+            `${name} is indifferent to the dimension pertaining to details and unique elements`
             : `They have low levels of importance for details and unique elements`)}
         </p>
 
 
         <p>
           {aspects[3].selected*10 >= 70
-            ? `${localStorage.getItem("testerUsername")} has a high focus on price`
+            ? `${name} has a high focus on price`
             : 
             (aspects[3].selected*10 >= 40 ?
-            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to price`
+            `${name} is indifferent to the dimension pertaining to price`
             : `They have low levels of importance for price`)}
         </p>
 
 
         <p>
           {aspects[4].selected*10 >= 70
-            ? `${localStorage.getItem("testerUsername")} has a high focus on ease of use`
+            ? `${name} has a high focus on ease of use`
             : 
-            (aspects[2].selected*10 >= 40 ?
-            `${localStorage.getItem("testerUsername")} is indifferent to the dimension pertaining to ease of use`
+            (aspects[4].selected*10 >= 40 ?
+            `${name} is indifferent to the dimension pertaining to ease of use`
             : `They have low levels of importance for details and unique elements`)}
         </p>
       </div>
